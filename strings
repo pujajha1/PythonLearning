@@ -1,0 +1,77 @@
+>>> line = 'asdf fjdk; afed, fjek,asdf, foo'
+>>> import re
+>>> re.split(r'[;,\s]\s*', line)
+['asdf', 'fjdk', 'afed', 'fjek', 'asdf', 'foo']
+
+
+\s=whitespace
+
+>>> fields = re.split(r'(;|,|\s)\s*', line)
+>>> fields
+['asdf', ' ', 'fjdk', ';', 'afed', ',', 'fjek', ',', 'asdf', ',', 'foo']
+
+Q: How to list files inside directories
+
+>>> import os
+>>> filenames = os.listdir('.')
+>>> filenames
+[ 'Makefile', 'foo.c', 'bar.py', 'spam.c', 'spam.h' ]
+>>> [name for name in filenames if name.endswith(('.c', '.h')) ]
+['foo.c', 'spam.c', 'spam.h'
+>>> any(
+
+
+Q: String matching
+
+>>> text1 = '11/27/2012'
+>>> text2 = 'Nov 27, 2012'
+>>>
+>>> import re
+>>> # Simple matching: \d+ means match one or more digits
+>>> if re.match(r'\d+/\d+/\d+', text1):
+... print('yes')
+... else:
+... print('no')
+
+Q: String Replacement
+
+>>> text = 'Today is 11/27/2012. PyCon starts 3/13/2013.'
+>>> import re
+>>> re.sub(r'(\d+)/(\d+)/(\d+)', r'\3-\1-\2', text)
+'Today is 2012-11-27. PyCon starts 2013-3-13.'
+
+Q:stripping
+
+>>> # Whitespace stripping
+>>> s = ' hello world \n'
+>>> s.strip()
+'hello world'
+>>> s.lstrip()
+'hello world \n'
+>>> s.rstrip()
+' hello world'
+>>>
+>>> # Character stripping
+>>> t = '-----hello====='
+>>> t.lstrip('-')
+'hello====='
+>>> t.strip('-=')
+'hello'
+
+
+Q:removing whitespace between 2 strings
+
+>>> s = ' hello world \n'
+>>> import re
+>>> re.sub('\s+', ' ', s)
+'hello world'
+
+Q:list to strins
+
+>>> parts = ['Is', 'Chicago', 'Not', 'Chicago?']
+>>> ' '.join(parts)
+'Is Chicago Not Chicago?'
+>>> ','.join(parts)
+'Is,Chicago,Not,Chicago?'
+>>> ''.join(parts)
+'IsChicagoNotChicago?'
