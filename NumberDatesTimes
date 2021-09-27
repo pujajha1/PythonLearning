@@ -89,3 +89,71 @@ datetime.datetime(2012, 9, 23, 21, 37, 4, 177393)
 >>> nice_z = datetime.strftime(z, '%A %B %d, %Y')
 >>> nice_z
 'Sunday September 23, 2012'
+
+
+Q:
+
+>>> from datetime import datetime
+>>> from pytz import timezone
+110 | Chapter 3: Numbers, Dates, and Times
+www.it-ebooks.info
+>>> d = datetime(2012, 12, 21, 9, 30, 0)
+>>> print(d)
+2012-12-21 09:30:00
+>>>
+>>> # Localize the date for Chicago
+>>> central = timezone('US/Central')
+>>> loc_d = central.localize(d)
+>>> print(loc_d)
+2012-12-21 09:30:00-06:00
+
+
+
+>>> # Convert to Bangalore time
+>>> bang_d = loc_d.astimezone(timezone('Asia/Kolkata'))
+>>> print(bang_d)
+2012-12-21 21:00:00+05:30
+
+
+Q: daylight saving
+
+>>> d = datetime(2013, 3, 10, 1, 45)
+>>> loc_d = central.localize(d)
+>>> print(loc_d)
+2013-03-10 01:45:00-06:00
+
+>>> from datetime import timedelta
+>>> later = central.normalize(loc_d + timedelta(minutes=30))
+>>> print(later)
+2013-03-10 03:15:00-05:00
+
+
+Q;
+
+To keep your head from completely exploding, a common strategy for localized date
+handling is to convert all dates to UTC time and to use that for all internal storage and
+manipulation. For example:
+3.16. Manipulating Dates Involving Time Zones | 111
+>>> print(loc_d)
+2013-03-10 01:45:00-06:00
+>>> utc_d = loc_d.astimezone(pytz.utc)
+>>> print(utc_d)
+2013-03-10 07:45:00+00:00
+>>>
+Once in UTC, you don’t have to worry about issues related to daylight saving time and
+other matters. Thus, you can simply perform normal date arithmetic as before. Should
+you want to output the date in localized time, just convert it to the appropriate time
+zone afterward. For example:
+>>> later_utc = utc_d + timedelta(minutes=30)
+>>> print(later_utc.astimezone(central))
+2013-03-10 03:15:00-05:00
+
+One issue in working with time zones is simply figuring out what time zone names to
+use. For example, in this recipe, how was it known that “Asia/Kolkata” was the correct
+time zone name for India? To find out, you can consult the pytz.country_timezones
+dictionary using the ISO 3166 country code as a key. For example:
+>>> pytz.country_timezones['IN']
+['Asia/Kolkata']
+
+
+
