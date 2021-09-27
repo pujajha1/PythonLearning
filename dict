@@ -1,0 +1,7 @@
+Q:printing keys and values
+
+>>> user_0={"puja":"20 lacs","puja_before":"3 lacs"}
+>>> for k,v in user_0.items():print(k+"="+v)
+... 
+puja=20 lacs
+puja_before=3 lacs
