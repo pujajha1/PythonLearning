@@ -50,3 +50,77 @@ Q:REVERSE
 1
 >>> 
 
+Q: when dealing with index and value of a list:
+>>> my_list = ['a', 'b', 'c']
+>>> for idx, val in enumerate(my_list):
+... print(idx, val)
+...
+0 a
+1 b
+2 c
+
+>>> my_list = ['a', 'b', 'c']
+>>> for idx, val in enumerate(my_list, 1):
+... print(idx, val)
+...
+1 a
+2 b
+3 c
+
+data = [ (1, 2), (3, 4), (5, 6), (7, 8) ]
+# Correct!
+for n, (x, y) in enumerate(data):
+
+Q:going over two list simultane
+
+>>> xpts = [1, 5, 4, 2, 10, 7]
+>>> ypts = [101, 78, 37, 15, 62, 99]
+>>> for x, y in zip(xpts, ypts):
+... print(x,y)
+...
+1 101
+5 78
+4 37
+2 15
+10 62
+7 99
+>>>
+
+
+
+>>> a = [1, 2, 3]
+>>> b = ['w', 'x', 'y', 'z']
+>>> for i in zip(a,b):
+... print(i)
+...
+(1, 'w')
+(2, 'x')
+(3, 'y')
+
+
+>>> for i in zip_longest(a, b, fillvalue=0):
+... print(i)
+...
+(1, 'w')
+(2, 'x')
+(3, 'y')
+(0, 'z')
+
+>>> headers = ['name', 'shares', 'price']
+>>> values = ['ACME', 100, 490.1]
+>>> s = dict(zip(headers,values))
+>>> s
+{'name': 'ACME', 'shares': 100, 'price': 490.1}
+>>> for name, val in zip(headers, values):
+...  print(name, '=', val)
+... 
+name = ACME
+shares = 100
+price = 490.1
+
+
+>>> zip(a, b)
+<zip object at 0x1007001b8>
+>>> list(zip(a, b))
+[(1, 10), (2, 11), (3, 12)]
+
