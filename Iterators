@@ -1,0 +1,52 @@
+Q:open a file and read. from there:
+
+with open('/etc/passwd') as f:
+ while True:
+ line = next(f, None)
+ if line is None:
+ break
+ print(line, end='')
+ 
+ Q:yeild
+ 
+ it is one of the generator function of python.
+ >>> it=[1,2,3,4,5]
+>>> i=iter(it)
+>>> next(i)
+1
+>>> next(i)
+2
+>>> next(i)
+3
+>>> next(i)
+4
+>>> next(i)
+5
+>>> next(i)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+StopIteration
+
+The key feature is that a generator function only runs in response to “next” operations
+carried out in iteration. Once a generator function returns, iteration stops. However,
+the for statement that’s usually used to iterate takes care of these details, so you don’t
+normally need to worry about them
+
+Q:REVERSE
+
+>>> for i in it:print(i)
+... 
+1
+2
+3
+4
+5
+>>> for i in reversed(it):print(i)
+... 
+5
+4
+3
+2
+1
+>>> 
+
