@@ -5,3 +5,34 @@ Q:printing keys and values
 ... 
 puja=20 lacs
 puja_before=3 lacs
+
+
+
+Q:printing keys
+>>> for k in user_0.keys():print(k)
+... 
+puja
+puja_before
+
+
+Q:Printing values:
+>>> for k in user_0.values():print(k)
+... 
+20 lacs
+3 lacs
+
+Q:sorting  the dictionary
+
+>>> user_0={"puja":"20 lacs","duja_before":"3 lacs"}
+>>> for k in sorted(user_0.keys()):print(k)
+... 
+duja_before
+puja
+
+Without sorting:
+
+>>> for k in user_0.keys():print(k)
+... 
+puja
+duja_before
+
