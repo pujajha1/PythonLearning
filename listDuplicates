@@ -1,0 +1,17 @@
+Q: find if list has duplicate.
+
+SOLUTIOn: commented one work as well but it gave timeout for 1 case and passed for rest of them
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        if len(list(set(nums)))!=len(nums):
+            return True
+        return False
+    
+#         flag=False
+#         for i in nums:
+#             if nums.count(i)>1:
+#                 flag=True
+#                 break
+#         return flag
+        
